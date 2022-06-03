@@ -31,10 +31,12 @@ the workflow you will need:
     docker build -t act-ubuntu-for-cypress .
 ```
 
-- Run the workflow using the built container. From the root of the repository that you want to test run:
+- Create a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with read access to public repositories.
+
+- Run the workflow using the built container. From the root of the repository that you want to test run (enter the value of the Personal Access Token in place of `<pat>`)
 
 ```bash
-    act -P ubuntu-latest=act-ubuntu-for-cypress -b workflow_dispatch
+    act -P ubuntu-latest=act-ubuntu-for-cypress -b -s GITHUB_TOKEN=<pat> workflow_dispatch
 ```
 
 The `-b` switch is used to mount the tested repository in the container instead of copying it. Thanks to that, test reports will be available in `tests/cypress/reports`.
