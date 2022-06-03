@@ -10,8 +10,9 @@ Usually, the repository will be checked-out in a GitHub Actions workflow step:
 
 - name: Checkout repository
   uses: actions/checkout@v3
-  repository: curityio/github-actions-utilities
-  path: utils
+  with:
+    repository: curityio/github-actions-utilities
+    path: utils
 
 ```
 
